@@ -125,7 +125,10 @@ session({
 
 ## 測試與調試
 
-- 測試目前使用 Node.js 內建測試執行器 (`node --test`)
+- 執行所有測試: `npm test` (Node.js 內建測試執行器)
+- 執行單一測試檔: `node --test test/server-utils.test.js`
+- `server.js` 透過 `module.exports` 匯出工具函數供測試使用；只有在 `require.main === module` 時才啟動 HTTP 伺服器，因此 `require('../server')` 不會啟動伺服器
+- `puppeteer` 已安裝於 devDependencies，可用於瀏覽器端的 E2E 測試
 - 調試端點: `GET /api/debug/fingerprint/:id` 可查看完整指紋資料
 - Console 輸出詳細的相似度計算過程 (查看 server.js 終端輸出)
 
